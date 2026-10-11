@@ -86,7 +86,7 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .service-card ul { color: var(--muted); font-size: 14px; line-height: 1.85; list-style: none; margin: 28px 0 35px; padding: 0; }
 .service-card ul li::before { color: var(--blue); content: '—'; margin-right: 9px; }
 .service-card .text-link { margin-top: auto; width: fit-content; }
-.reading-mark { display: flex; gap: 12px; margin: auto 0 38px; padding-top: 30px; }
+.reading-mark { display: flex; gap: 12px; margin: 0; }
 .reading-mark span { border-radius: 50%; display: block; }
 .reading-mark span:nth-child(1) { background: var(--rose); height: 29px; width: 29px; }
 .reading-mark span:nth-child(2) { background: var(--mint); height: 47px; margin-top: 12px; width: 47px; }
@@ -109,10 +109,9 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .carousel-counter { color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: 0.16em; margin: 0; min-width: 50px; text-align: center; }
 
 .approach { background: var(--ink); color: var(--paper); padding: 108px 0; }
-.approach-layout { align-items: start; display: grid; gap: 52px; grid-template-columns: 70px 0.95fr 1fr; }
+.approach-layout { align-items: start; display: grid; gap: 52px; grid-template-columns: 0.95fr 1fr; }
 .approach .eyebrow { color: var(--mint); }
 .approach h2 { color: var(--paper); }
-.approach-number { color: var(--rose); font-family: var(--serif); font-size: 25px; margin: 0; }
 .approach-copy { color: #e0dde4; font-family: var(--serif); font-size: 21px; line-height: 1.47; max-width: 560px; }
 .approach-copy p:last-child { color: var(--mint); margin-bottom: 0; }
 
@@ -123,6 +122,16 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .detail-list li > span { color: var(--blue); font-family: var(--serif); font-size: 17px; }
 .detail-list p { color: var(--muted); margin: 0; }
 .detail-list strong { color: var(--ink); font-weight: 700; }
+
+.event-options { display: grid; gap: min(10vw, 130px); grid-template-columns: 0.9fr 1fr; padding: 126px 0; }
+.event-options-intro > p:not(.eyebrow) { color: var(--muted); font-family: var(--serif); font-size: 20px; max-width: 510px; }
+.event-use-cases { color: var(--ink); display: grid; font-size: 14px; gap: 10px; grid-template-columns: 1fr 1fr; list-style: none; margin: 34px 0 0; padding: 0; }
+.event-use-cases li::before { color: var(--blue); content: '—'; margin-right: 9px; }
+.booking-options { background: #e8f0e4; padding: clamp(31px, 4.5vw, 54px); }
+.booking-option { border-top: 1px solid var(--line); padding: 24px 0; }
+.booking-option h3 { font-size: clamp(1.55rem, 2.2vw, 2.1rem); margin: 0 0 12px; }
+.booking-option p { color: var(--muted); margin: 0; }
+.booking-options .text-link { display: inline-block; margin-top: 14px; }
 
 .contact-section { background: #d8e8df; padding: 116px 0; }
 .contact-layout { display: grid; gap: min(10vw, 130px); grid-template-columns: 0.82fr 1fr; }
@@ -155,16 +164,16 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
   .hero { min-height: 0; }
   .welcome-hero { padding: 54px 20px 74px; }
   .hero-logo { margin-bottom: 20px; }
-  .services, .results, .details { padding: 82px 0; }
-  .section-intro, .results-layout, .approach-layout, .details, .contact-layout { display: block; }
-  .results-intro { margin-bottom: 43px; }
+  .services, .results, .details, .event-options { padding: 82px 0; }
+  .section-intro, .results-layout, .approach-layout, .details, .event-options, .contact-layout { display: block; }
+  .results-intro, .event-options-intro { margin-bottom: 43px; }
+  .event-use-cases { grid-template-columns: 1fr; }
   .results-carousel { margin: 0 auto; max-width: 390px; }
   .section-intro { margin-bottom: 35px; }
   .service-grid { grid-template-columns: 1fr; }
   .service-card { min-height: 0; }
   .service-card-reading { min-height: 500px; }
   .approach { padding: 78px 0; }
-  .approach-number { margin-bottom: 23px; }
   .approach h2 { margin-bottom: 28px; }
   .approach-copy { font-size: 19px; }
   .details h2 { margin-bottom: 42px; }
