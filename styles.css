@@ -137,8 +137,15 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .contact-layout { display: grid; gap: min(10vw, 130px); grid-template-columns: 0.82fr 1fr; }
 .contact-copy > p:not(.eyebrow) { color: var(--muted); font-family: var(--serif); font-size: 20px; max-width: 390px; }
 .social-links { display: flex; flex-direction: column; gap: 10px; margin-top: 44px; }
-.social-links a { font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-decoration: none; text-transform: uppercase; width: fit-content; }
-.social-links a:hover, .social-links a:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+.social-links a { align-items: center; display: inline-flex; font-size: 12px; font-weight: 800; gap: 7px; letter-spacing: 0.12em; line-height: 1; text-decoration: none; text-transform: uppercase; transition: color 160ms ease; width: fit-content; }
+.social-icon { display: block; flex: 0 0 auto; height: 16px; width: 16px; }
+.social-icon-facebook { fill: #1877f2; }
+.social-icon-instagram rect, .social-icon-instagram circle { fill: none; stroke: url(#instagram-gradient); stroke-width: 1.8; }
+.social-icon-instagram circle:last-child { fill: url(#instagram-gradient); stroke: none; }
+.social-links a > span:last-child { font-size: 17px; font-weight: 400; line-height: 1; transition: transform 160ms ease; }
+.social-links a:hover, .social-links a:focus-visible { color: var(--blue); text-decoration: underline; text-underline-offset: 4px; }
+.social-links a:hover > span:last-child, .social-links a:focus-visible > span:last-child { transform: translateX(4px); }
+.social-links a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .contact-form { background: var(--paper); padding: clamp(29px, 4vw, 48px); }
 .form-row { display: flex; flex-direction: column; gap: 8px; margin-bottom: 21px; }
 .form-row label { font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
