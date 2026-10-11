@@ -96,6 +96,9 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .result-feature::before { background: var(--rose); content: ''; height: 88%; left: -22px; position: absolute; top: 27px; width: 100%; z-index: 0; }
 .result-feature img { display: block; height: auto; position: relative; width: 100%; z-index: 1; }
 .result-feature figcaption { color: var(--blue); font-size: 10px; font-weight: 800; letter-spacing: 0.16em; margin-top: 14px; text-transform: uppercase; }
+.results-gallery { display: grid; gap: 22px; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 88px; }
+.result-tile { background: var(--paper); margin: 0; overflow: hidden; }
+.result-tile img { aspect-ratio: 0.72; display: block; height: 100%; object-fit: cover; width: 100%; }
 
 .approach { background: var(--ink); color: var(--paper); padding: 108px 0; }
 .approach-layout { align-items: start; display: grid; gap: 52px; grid-template-columns: 70px 0.95fr 1fr; }
@@ -148,6 +151,7 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
   .section-intro, .results-layout, .approach-layout, .details, .contact-layout { display: block; }
   .results-intro { margin-bottom: 43px; }
   .result-feature { margin: 0 auto; max-width: 390px; }
+  .results-gallery { gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 56px; }
   .section-intro { margin-bottom: 35px; }
   .service-grid { grid-template-columns: 1fr; }
   .service-card { min-height: 0; }
