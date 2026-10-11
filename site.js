@@ -16,6 +16,35 @@ navigation?.querySelectorAll('a').forEach(link => {
   });
 });
 
+document.querySelectorAll('[data-carousel]').forEach(carousel => {
+  const slides = [...carousel.querySelectorAll('[data-carousel-slide]')];
+  const previousButton = carousel.querySelector('[data-carousel-previous]');
+  const nextButton = carousel.querySelector('[data-carousel-next]');
+  const currentLabel = carousel.querySelector('[data-carousel-current]');
+  let currentIndex = 0;
+
+  const renderCarousel = () => {
+    slides.forEach((slide, index) => {
+      const position = (index - currentIndex + slides.length) % slides.length;
+      slide.dataset.position = String(position);
+      slide.setAttribute('aria-hidden', String(position !== 0));
+    });
+    currentLabel.textContent = String(currentIndex + 1);
+  };
+
+  previousButton?.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    renderCarousel();
+  });
+
+  nextButton?.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    renderCarousel();
+  });
+
+  renderCarousel();
+});
+
 const form = document.querySelector('#contact-form');
 const status = document.querySelector('#form-status');
 

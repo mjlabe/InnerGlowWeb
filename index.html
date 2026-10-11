@@ -28,7 +28,7 @@
       <div class="fluid-orb fluid-orb-rose" aria-hidden="true"></div>
       <div class="hero-copy">
         <img class="hero-logo" src="assets/labelle_light_and_insight_logo.png" alt="LaBelle Light & Insight Aura Photography">
-        <p class="eyebrow">A PHOTO BOOTH WITH A LITTLE MAGIC</p>
+        <p class="eyebrow">PHOTOS WITH A LITTLE MAGIC</p>
         <h1 id="hero-heading">Meet your<br><em>inner glow.</em></h1>
         <p class="hero-intro">Aura photography for meaningful gatherings and one-to-one moments of insight.</p>
         <div class="hero-actions">
@@ -46,7 +46,6 @@
       <div class="service-grid">
         <article class="service-card service-card-booth">
           <div class="service-card-heading">
-            <img src="assets/innerglow_logo.png" alt="InnerGlow">
             <p class="service-label">FOR EVENTS &amp; GATHERINGS</p>
           </div>
           <h3>InnerGlow Aura<br>Photo Booth</h3>
@@ -56,13 +55,16 @@
             <li>Personalized portrait keepsake</li>
             <li>A natural conversation starter</li>
           </ul>
-          <a class="text-link" href="#contact">Ask about a rental <span aria-hidden="true">→</span></a>
+          <div class="service-card-footer">
+            <a class="text-link" href="#contact">Ask about a rental <span aria-hidden="true">→</span></a>
+            <img src="assets/innerglow_logo.png" alt="InnerGlow">
+          </div>
         </article>
 
         <article class="service-card service-card-reading">
           <p class="service-label">ONE-TO-ONE EXPERIENCE</p>
           <h3>LaBelle Light &amp; Insight<br>Aura Photography</h3>
-          <p>Set aside time for an aura portrait and an in-person reading with a real person—an attentive experience created just for you.</p>
+          <p>Set aside time for an aura portrait and an in-person reading — an attentive experience created just for you.</p>
           <div class="reading-mark" aria-hidden="true"><span></span><span></span><span></span></div>
           <a class="text-link" href="#contact">Plan your session <span aria-hidden="true">→</span></a>
         </article>
@@ -76,19 +78,23 @@
           <h2 id="results-heading">A portrait in color.</h2>
           <p>Every session carries its own palette. Explore a selection of aura portraits created through the InnerGlow experience.</p>
         </div>
-        <figure class="result-feature">
-          <img src="assets/results/aura-portrait-01.jpg" alt="Aura portrait showing an individual surrounded by layered green, blue, violet, and pink color">
-          <figcaption>Example aura portrait</figcaption>
-        </figure>
-      </div>
-      <div class="section-wrap results-gallery" aria-label="Aura portrait gallery">
-        <figure class="result-tile"><img src="assets/results/Amandaenergy.jpg" alt="Aura portrait with a blue and green palette" loading="lazy"></figure>
-        <figure class="result-tile"><img src="assets/results/Jenenergy.jpg" alt="Aura portrait with violet, blue, and green colors" loading="lazy"></figure>
-        <figure class="result-tile"><img src="assets/results/MarcAura.jpg" alt="Aura portrait with deep blue and turquoise colors" loading="lazy"></figure>
-        <figure class="result-tile"><img src="assets/results/brentenergy.jpg" alt="Aura portrait with magenta, blue, green, and orange colors" loading="lazy"></figure>
-        <figure class="result-tile"><img src="assets/results/demmingenergy.jpg" alt="Aura portrait with green and blue colors" loading="lazy"></figure>
-        <figure class="result-tile"><img src="assets/results/joeyenergy.jpg" alt="Aura portrait with green, blue, and magenta colors" loading="lazy"></figure>
-        <figure class="result-tile"><img src="assets/results/pinneyenergy.jpg" alt="Aura portrait with magenta, yellow, and blue colors" loading="lazy"></figure>
+        <div class="results-carousel" data-carousel aria-label="Aura portrait gallery">
+          <div class="results-stack">
+            <figure class="result-tile" data-carousel-slide><img src="assets/results/aura-portrait-01.jpg" alt="Aura portrait showing an individual surrounded by layered green, blue, violet, and pink color"></figure>
+            <figure class="result-tile" data-carousel-slide><img src="assets/results/Amandaenergy.jpg" alt="Aura portrait with a blue and green palette" loading="lazy"></figure>
+            <figure class="result-tile" data-carousel-slide><img src="assets/results/Jenenergy.jpg" alt="Aura portrait with violet, blue, and green colors" loading="lazy"></figure>
+            <figure class="result-tile" data-carousel-slide><img src="assets/results/MarcAura.jpg" alt="Aura portrait with deep blue and turquoise colors" loading="lazy"></figure>
+            <figure class="result-tile" data-carousel-slide><img src="assets/results/brentenergy.jpg" alt="Aura portrait with magenta, blue, green, and orange colors" loading="lazy"></figure>
+            <figure class="result-tile" data-carousel-slide><img src="assets/results/demmingenergy.jpg" alt="Aura portrait with green and blue colors" loading="lazy"></figure>
+            <figure class="result-tile" data-carousel-slide><img src="assets/results/joeyenergy.jpg" alt="Aura portrait with green, blue, and magenta colors" loading="lazy"></figure>
+            <figure class="result-tile" data-carousel-slide><img src="assets/results/pinneyenergy.jpg" alt="Aura portrait with magenta, yellow, and blue colors" loading="lazy"></figure>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-control" type="button" data-carousel-previous aria-label="Show previous aura portrait"><span aria-hidden="true">←</span></button>
+            <p class="carousel-counter"><span data-carousel-current>1</span> / 8</p>
+            <button class="carousel-control" type="button" data-carousel-next aria-label="Show next aura portrait"><span aria-hidden="true">→</span></button>
+          </div>
+        </div>
       </div>
     </section>
 
