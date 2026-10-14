@@ -1,6 +1,9 @@
 WEB_PORT ?= 4173
 
-.PHONY: web
+.PHONY: test web
+test:
+	@node --test tests/site-helpers.test.js
+
 web:
 	@if lsof -ti tcp:$(WEB_PORT) >/dev/null; then \
 		echo "Stopping existing server on port $(WEB_PORT)..."; \

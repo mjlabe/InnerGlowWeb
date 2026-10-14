@@ -45,6 +45,102 @@ document.querySelectorAll('[data-carousel]').forEach(carousel => {
   renderCarousel();
 });
 
+document.querySelectorAll('[data-testimonial-carousel]').forEach(carousel => {
+  const slides = [...carousel.querySelectorAll('[data-testimonial-slide]')];
+  const previousButton = carousel.querySelector('[data-testimonial-previous]');
+  const nextButton = carousel.querySelector('[data-testimonial-next]');
+  const currentLabel = carousel.querySelector('[data-testimonial-current]');
+  let currentIndex = 0;
+
+  const renderCarousel = () => {
+    const compactLayout = window.matchMedia('(max-width: 760px)').matches;
+    slides.forEach((slide, index) => {
+      slide.setAttribute('aria-hidden', String(compactLayout && index !== currentIndex));
+    });
+    currentLabel.textContent = String(currentIndex + 1);
+  };
+
+  previousButton?.addEventListener('click', () => {
+    currentIndex = SiteHelpers.nextIndex(currentIndex, slides.length, -1);
+    renderCarousel();
+  });
+
+  nextButton?.addEventListener('click', () => {
+    currentIndex = SiteHelpers.nextIndex(currentIndex, slides.length, 1);
+    renderCarousel();
+  });
+
+  window.matchMedia('(max-width: 760px)').addEventListener('change', renderCarousel);
+  renderCarousel();
+});
+
+const eventsList = document.querySelector('[data-events-list]');
+const eventsStatus = document.querySelector('[data-events-status]');
+
+const eventRow = event => {
+  const display = SiteHelpers.eventDisplay(event, window.calendarConfig.timeZone);
+  const item = document.createElement('li');
+  const date = document.createElement('div');
+  const day = document.createElement('strong');
+  const month = document.createElement('span');
+  const details = document.createElement('div');
+  const title = document.createElement('h3');
+  const schedule = document.createElement('p');
+
+  item.className = 'event-item';
+  date.className = 'event-date';
+  date.setAttribute('aria-hidden', 'true');
+  day.textContent = display.day;
+  month.textContent = display.month;
+  details.className = 'event-details';
+  title.textContent = display.title;
+  schedule.textContent = `${display.dateLabel} · ${display.timeLabel}`;
+  date.append(day, month);
+  details.append(title, schedule);
+
+  if (display.location) {
+    const location = document.createElement('p');
+    location.textContent = display.location;
+    details.append(location);
+  }
+
+  item.append(date, details);
+  return item;
+};
+
+const setEventsStatus = message => {
+  if (eventsStatus) eventsStatus.textContent = message;
+};
+
+const loadEvents = async () => {
+  if (!eventsList || !eventsStatus || !window.calendarConfig?.apiKey) return;
+
+  const params = new URLSearchParams({
+    key: window.calendarConfig.apiKey,
+    singleEvents: 'true',
+    orderBy: 'startTime',
+    timeMin: new Date().toISOString(),
+    maxResults: '4',
+    fields: 'items(summary,start,end,location)',
+  });
+
+  try {
+    const calendarId = encodeURIComponent(window.calendarConfig.calendarId);
+    const response = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?${params}`);
+    if (!response.ok) throw new Error('Calendar request failed');
+
+    const payload = await response.json();
+    const events = payload.items || [];
+    eventsList.replaceChildren(...events.map(eventRow));
+    setEventsStatus(events.length ? '' : 'No dates are on the calendar just yet. Check back soon.');
+  } catch {
+    eventsList.replaceChildren();
+    setEventsStatus('Upcoming dates are taking a moment to load. Please use the full calendar link.');
+  }
+};
+
+loadEvents();
+
 const form = document.querySelector('#contact-form');
 const status = document.querySelector('#form-status');
 

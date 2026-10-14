@@ -108,6 +108,18 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .carousel-control:hover, .carousel-control:focus-visible { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
 .carousel-counter { color: var(--blue); font-size: 11px; font-weight: 800; letter-spacing: 0.16em; margin: 0; min-width: 50px; text-align: center; }
 
+.testimonials { padding: 126px 0; }
+.testimonials-heading { margin-bottom: 48px; max-width: 690px; }
+.testimonial-track { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
+.testimonial-card { display: flex; flex-direction: column; min-height: 300px; padding: clamp(28px, 3vw, 42px); }
+.testimonial-card:nth-child(1) { background: var(--cream); }
+.testimonial-card:nth-child(2) { background: #e8f0e4; }
+.testimonial-card:nth-child(3) { background: #f3e9f0; }
+.testimonial-card blockquote { margin: 0; }
+.testimonial-card blockquote p { font-family: var(--serif); font-size: clamp(1.3rem, 1.8vw, 1.65rem); line-height: 1.34; }
+.testimonial-card cite { color: var(--blue); font-size: 11px; font-style: normal; font-weight: 800; letter-spacing: 0.14em; margin-top: auto; text-transform: uppercase; }
+.testimonial-controls { display: none; }
+
 .approach { background: var(--ink); color: var(--paper); padding: 108px 0; }
 .approach-layout { align-items: start; display: grid; gap: 52px; grid-template-columns: 0.95fr 1fr; }
 .approach .eyebrow { color: var(--mint); }
@@ -132,6 +144,21 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .booking-option h3 { font-size: clamp(1.55rem, 2.2vw, 2.1rem); margin: 0 0 12px; }
 .booking-option p { color: var(--muted); margin: 0; }
 .booking-options .text-link { display: inline-block; margin-top: 14px; }
+
+.upcoming-events { background: var(--cream); padding: 126px 0; }
+.events-layout { align-items: start; display: grid; gap: min(10vw, 130px); grid-template-columns: 0.75fr 1fr; }
+.events-intro > p:not(.eyebrow) { color: var(--muted); font-family: var(--serif); font-size: 20px; margin: 27px 0 34px; max-width: 430px; }
+.events-panel { background: var(--paper); min-height: 285px; padding: clamp(28px, 4vw, 48px); }
+.events-status { color: var(--muted); font-size: 14px; margin: 0; }
+.events-list { list-style: none; margin: 0; padding: 0; }
+.events-status:not(:empty) + .events-list { margin-top: 18px; }
+.event-item { border-top: 1px solid var(--line); display: grid; gap: 19px; grid-template-columns: 54px 1fr; padding: 20px 0; }
+.event-date { align-items: center; background: var(--mint); display: flex; flex-direction: column; justify-content: center; min-height: 54px; }
+.event-date strong { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1; }
+.event-date span { font-size: 9px; font-weight: 800; letter-spacing: 0.13em; margin-top: 4px; }
+.event-details h3 { font-size: clamp(1.35rem, 2vw, 1.7rem); margin: 0 0 5px; }
+.event-details p { color: var(--muted); font-size: 14px; margin: 0; }
+.event-details p + p { margin-top: 3px; }
 
 .contact-section { background: #d8e8df; padding: 116px 0; }
 .contact-layout { display: grid; gap: min(10vw, 130px); grid-template-columns: 0.82fr 1fr; }
@@ -171,12 +198,18 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
   .hero { min-height: 0; }
   .welcome-hero { padding: 54px 20px 74px; }
   .hero-logo { margin-bottom: 20px; }
-  .services, .results, .details, .event-options { padding: 82px 0; }
-  .section-intro, .results-layout, .approach-layout, .details, .event-options, .contact-layout { display: block; }
-  .results-intro, .event-options-intro { margin-bottom: 43px; }
+  .services, .results, .details, .event-options, .testimonials, .upcoming-events { padding: 82px 0; }
+  .section-intro, .results-layout, .approach-layout, .details, .event-options, .events-layout, .contact-layout { display: block; }
+  .results-intro, .event-options-intro, .events-intro { margin-bottom: 43px; }
   .event-use-cases { grid-template-columns: 1fr; }
   .results-carousel { margin: 0 auto; max-width: 390px; }
   .section-intro { margin-bottom: 35px; }
+  .testimonials-heading { margin-bottom: 35px; }
+  .testimonial-track { display: flex; gap: 0; overflow: hidden; }
+  .testimonial-card { flex: 0 0 100%; min-height: 310px; }
+  .testimonial-card[aria-hidden='true'] { display: none; }
+  .testimonial-controls { align-items: center; display: flex; gap: 20px; justify-content: center; margin-top: 28px; }
+  .events-panel { min-height: 0; }
   .service-grid { grid-template-columns: 1fr; }
   .service-card { min-height: 0; }
   .service-card-reading { min-height: 500px; }

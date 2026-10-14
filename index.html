@@ -16,6 +16,8 @@
     <nav id="site-navigation" class="site-navigation" aria-label="Main navigation">
       <a href="#services">Services</a>
       <a href="#results">Results</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#events">Upcoming events</a>
       <a href="#approach">Our approach</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -107,6 +109,34 @@
       </div>
     </section>
 
+    <section id="testimonials" class="testimonials section-wrap" aria-labelledby="testimonials-heading">
+      <div class="testimonials-heading">
+        <p class="eyebrow">COMMUNITY NOTES</p>
+        <h2 id="testimonials-heading">Kind words from the community.</h2>
+      </div>
+      <div class="testimonial-carousel" data-testimonial-carousel aria-label="Testimonials">
+        <div class="testimonial-track">
+          <article class="testimonial-card" data-testimonial-slide>
+            <blockquote><p>“Jen made the whole experience feel clear and personal. Her reading was detailed, and everything she shared about my colors and arches resonated so much.”</p></blockquote>
+            <cite>Kelly B</cite>
+          </article>
+          <article class="testimonial-card" data-testimonial-slide>
+            <blockquote><p>“Jen was wonderful to work with at my cafe, and I loved my aura reading. She explained everything in a way that was easy to understand.”</p></blockquote>
+            <cite>Krissy W</cite>
+          </article>
+          <article class="testimonial-card" data-testimonial-slide>
+            <blockquote><p>“Jen was kind, responsive, and professional, with a setup that made everyone comfortable. Our customers loved her aura photography.”</p></blockquote>
+            <cite>The Rooted Cup</cite>
+          </article>
+        </div>
+        <div class="testimonial-controls">
+          <button class="carousel-control" type="button" data-testimonial-previous aria-label="Show previous testimonial"><span aria-hidden="true">←</span></button>
+          <p class="carousel-counter"><span data-testimonial-current>1</span> / 3</p>
+          <button class="carousel-control" type="button" data-testimonial-next aria-label="Show next testimonial"><span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </section>
+
     <section id="approach" class="approach" aria-labelledby="approach-heading">
       <div class="section-wrap approach-layout">
         <div>
@@ -155,6 +185,21 @@
           <p>Bring the experience to a market, vendor event, or pop-up, where guests can purchase their own individual session.</p>
         </article>
         <a class="text-link" href="#contact">Tell us about your event <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section id="events" class="upcoming-events" aria-labelledby="events-heading">
+      <div class="section-wrap events-layout">
+        <div class="events-intro">
+          <p class="eyebrow">UPCOMING DATES</p>
+          <h2 id="events-heading">Find us in the wild.</h2>
+          <p>See where you can step into the color, connection, and a little more curiosity.</p>
+          <a class="text-link" href="https://calendar.google.com/calendar/u/4?cid=bGFiZWxsZWxpZ2h0QGdtYWlsLmNvbQ" target="_blank" rel="noreferrer">View full calendar <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="events-panel" aria-live="polite">
+          <p class="events-status" data-events-status>Loading upcoming events…</p>
+          <ol class="events-list" data-events-list aria-describedby="events-heading"></ol>
+        </div>
       </div>
     </section>
 
@@ -219,6 +264,8 @@
     </div>
   </footer>
 
+  <script src="calendar-config.js"></script>
+  <script src="site-helpers.js"></script>
   <script src="site.js"></script>
 </body>
 </html>
