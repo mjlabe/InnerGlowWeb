@@ -116,7 +116,7 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .testimonial-card:nth-child(2) { background: #e8f0e4; }
 .testimonial-card:nth-child(3) { background: #f3e9f0; }
 .testimonial-card blockquote { margin: 0; }
-.testimonial-card blockquote p { font-family: var(--serif); font-size: clamp(1.3rem, 1.8vw, 1.65rem); line-height: 1.34; }
+.testimonial-card blockquote p { font-family: var(--serif); font-size: clamp(1.1rem, 1.5vw, 1.3rem); line-height: 1.34; }
 .testimonial-card cite { color: var(--blue); font-size: 11px; font-style: normal; font-weight: 800; letter-spacing: 0.14em; margin-top: auto; text-transform: uppercase; }
 .testimonial-controls { display: none; }
 
