@@ -94,7 +94,12 @@ const eventRow = event => {
   month.textContent = display.month;
   details.className = 'event-details';
   title.textContent = display.title;
-  schedule.textContent = `${display.dateLabel} · ${display.timeLabel}`;
+  
+  // Clear standard textContent assignment and use line break
+  schedule.textContent = display.dateLabel;
+  schedule.appendChild(document.createElement('br'));
+  schedule.appendChild(document.createTextNode(display.timeLabel));
+
   date.append(day, month);
   details.append(title, schedule);
 
