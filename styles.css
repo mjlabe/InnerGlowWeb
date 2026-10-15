@@ -206,7 +206,7 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
   .section-intro { margin-bottom: 35px; }
   .testimonials-heading { margin-bottom: 35px; }
   .testimonial-track { display: flex; gap: 0; overflow: hidden; }
-  .testimonial-card { flex: 0 0 100%; min-height: 270px; }
+  .testimonial-card { flex: 0 0 100%; min-height: 300px; }
   .testimonial-card[aria-hidden='true'] { display: none; }
   .testimonial-controls { align-items: center; display: flex; gap: 20px; justify-content: center; margin-top: 28px; }
   .events-panel { min-height: 0; }
