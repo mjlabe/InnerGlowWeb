@@ -148,9 +148,9 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .upcoming-events { background: var(--cream); padding: 126px 0; }
 .events-layout { align-items: start; display: grid; gap: min(10vw, 130px); grid-template-columns: 0.75fr 1fr; }
 .events-intro > p:not(.eyebrow) { color: var(--muted); font-family: var(--serif); font-size: 20px; margin: 27px 0 34px; max-width: 430px; }
-.events-panel { background: var(--paper); min-height: 600px; padding: clamp(28px, 4vw, 48px); }
+.events-panel { background: var(--paper); min-height: 485px; padding: clamp(28px, 4vw, 48px); }
 .events-status { color: var(--muted); font-size: 14px; margin: 0; }
-.events-list { list-style: none; margin: 0; max-height: 200px; overflow-y: scroll; overscroll-behavior: contain; padding: 0 12px 0 0; scrollbar-gutter: stable; }
+.events-list { list-style: none; margin: 0; max-height: 400px; overflow-y: scroll; overscroll-behavior: contain; padding: 0 12px 0 0; scrollbar-gutter: stable; }
 .events-status:not(:empty) + .events-list { margin-top: 18px; }
 .event-item { border-top: 1px solid var(--line); display: grid; gap: 19px; grid-template-columns: 54px 1fr; padding: 20px 0; }
 .event-date { align-items: center; background: var(--mint); display: flex; flex-direction: column; justify-content: center; min-height: 54px; }
@@ -209,7 +209,7 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
   .testimonial-card { flex: 0 0 100%; min-height: 350px; }
   .testimonial-card[aria-hidden='true'] { display: none; }
   .testimonial-controls { align-items: center; display: flex; gap: 20px; justify-content: center; margin-top: 28px; }
-  .events-panel { min-height: 600; }
+  .events-panel { min-height: 400; }
   .service-grid { grid-template-columns: 1fr; }
   .service-card { min-height: 0; }
   .service-card-reading { min-height: 500px; }
