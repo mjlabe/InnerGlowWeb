@@ -20,16 +20,16 @@ button, input, select, textarea { font: inherit; }
 button, select { cursor: pointer; }
 
 .section-wrap { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
-.site-header { align-items: center; display: flex; justify-content: space-between; min-height: 48px; padding: 2px max(32px, calc((100vw - 1180px) / 2)); position: relative; z-index: 2; }
+.site-header { align-items: center; display: flex; justify-content: space-between; left: 0; min-height: 48px; padding: 2px max(32px, calc((100vw - 1180px) / 2)); position: absolute; right: 0; top: 0; z-index: 2; }
 .brand { display: inline-flex; height: 48px; width: 126px; }
 .brand img { height: 100%; max-width: 100%; object-fit: contain; }
-.site-navigation { align-items: center; display: flex; gap: 31px; }
+.site-navigation { align-items: center; display: flex; gap: 31px; padding-top: 10px;}
 .site-navigation a, .text-link { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-decoration: none; text-transform: uppercase; }
 .site-navigation a { border-bottom: 1px solid transparent; padding: 7px 0; }
 .site-navigation a:hover, .site-navigation a:focus-visible { border-color: var(--ink); }
 .menu-toggle { background: transparent; border: 0; color: var(--ink); display: none; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 
-.hero { min-height: min(710px, calc(100vh - 98px)); position: relative; }
+.hero { min-height: min(710px, 100vh); position: relative; }
 .welcome-hero { align-items: center; display: flex; justify-content: center; overflow: hidden; padding: 64px 32px 82px; text-align: center; }
 .hero-wash { background: radial-gradient(ellipse at 0% 0%, #fff2bacc 0%, transparent 58%), radial-gradient(ellipse at 55% 0%, #c6e0c9bb 0%, transparent 52%), radial-gradient(ellipse at 100% 25%, #bce1f1aa 0%, transparent 54%), radial-gradient(ellipse at 0% 64%, #f8cebb99 0%, transparent 50%), radial-gradient(ellipse at 12% 100%, #f6c9dcaa 0%, transparent 58%), radial-gradient(ellipse at 100% 95%, #c7beda99 0%, transparent 56%); inset: 0; pointer-events: none; position: absolute; }
 .fluid-orb { border-radius: 50%; pointer-events: none; position: absolute; }
