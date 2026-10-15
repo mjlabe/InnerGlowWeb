@@ -150,7 +150,7 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .events-intro > p:not(.eyebrow) { color: var(--muted); font-family: var(--serif); font-size: 20px; margin: 27px 0 34px; max-width: 430px; }
 .events-panel { background: var(--paper); min-height: 285px; padding: clamp(28px, 4vw, 48px); }
 .events-status { color: var(--muted); font-size: 14px; margin: 0; }
-.events-list { list-style: none; margin: 0; padding: 0; }
+.events-list { list-style: none; margin: 0; max-height: 200px; overflow-y: scroll; overscroll-behavior: contain; padding: 0 12px 0 0; scrollbar-gutter: stable; }
 .events-status:not(:empty) + .events-list { margin-top: 18px; }
 .event-item { border-top: 1px solid var(--line); display: grid; gap: 19px; grid-template-columns: 54px 1fr; padding: 20px 0; }
 .event-date { align-items: center; background: var(--mint); display: flex; flex-direction: column; justify-content: center; min-height: 54px; }
