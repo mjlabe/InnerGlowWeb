@@ -1,5 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const {
   calendarRequestUrl,
   calendarStatus,
@@ -69,6 +71,31 @@ test('builds a three-month upcoming-event request for the configured calendar', 
   assert.equal(url.searchParams.get('timeMax'), '2027-01-12T16:30:00.000Z');
   assert.equal(url.searchParams.get('maxResults'), '2500');
   assert.equal(url.searchParams.get('fields'), 'items(summary,start,end,location)');
+});
+
+test('links the full calendar without selecting a visitor Google account', () => {
+  const page = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  const match = page.match(/<a class="text-link" href="([^"]+)" target="_blank" rel="noreferrer">View full calendar/);
+  const url = new URL(match?.[1]);
+
+  assert.equal(url.pathname, '/calendar/embed');
+  assert.equal(url.searchParams.get('src'), 'labellelight@gmail.com');
+  assert.equal(url.pathname.includes('/u/'), false);
+});
+
+test('uses an SVG diagonal arrow for every external profile link', () => {
+  const page = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  const stylesheet = fs.readFileSync(path.join(__dirname, '..', 'styles.css'), 'utf8');
+
+  assert.equal((page.match(/class="external-link-icon"/g) || []).length, 3);
+  assert.equal(page.includes('↗'), false);
+  assert.match(stylesheet, /\.external-link-icon \{[^}]*transition: transform 160ms ease;/);
+});
+
+test('gives the full calendar link the social-link hover treatment', () => {
+  const stylesheet = fs.readFileSync(path.join(__dirname, '..', 'styles.css'), 'utf8');
+
+  assert.match(stylesheet, /\.events-intro \.text-link:hover, \.events-intro \.text-link:focus-visible \{ color: var\(--blue\); text-decoration: underline; text-underline-offset: 4px; \}/);
 });
 
 test('returns every event in the next 30 days plus five in the following two months', () => {

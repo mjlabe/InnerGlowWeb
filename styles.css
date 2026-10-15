@@ -52,7 +52,8 @@ h1 em { color: var(--blue); font-weight: 400; }
 .button-dark:hover, .button-dark:focus-visible { background: var(--ink); }
 .text-link { align-items: center; display: inline-flex; gap: 11px; }
 .text-link span { font-size: 18px; font-weight: 400; line-height: 0; transition: transform 160ms ease; }
-.text-link:hover span, .text-link:focus-visible span { transform: translateX(4px); }
+.external-link-icon { display: block; flex: 0 0 16px; height: 16px; transition: transform 160ms ease; width: 16px; }
+.text-link:hover span, .text-link:hover .external-link-icon, .text-link:focus-visible span, .text-link:focus-visible .external-link-icon { transform: translateX(4px); }
 
 @keyframes float-mint {
   from { transform: translate(0, 0) scale(1); }
@@ -148,6 +149,7 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .upcoming-events { background: var(--cream); padding: 126px 0; }
 .events-layout { align-items: start; display: grid; gap: min(10vw, 130px); grid-template-columns: 0.75fr 1fr; }
 .events-intro > p:not(.eyebrow) { color: var(--muted); font-family: var(--serif); font-size: 20px; margin: 27px 0 34px; max-width: 430px; }
+.events-intro .text-link:hover, .events-intro .text-link:focus-visible { color: var(--blue); text-decoration: underline; text-underline-offset: 4px; }
 .events-panel { background: var(--paper); min-height: 485px; padding: clamp(28px, 4vw, 48px); }
 .events-status { color: var(--muted); font-size: 14px; margin: 0; }
 .events-list { list-style: none; margin: 0; max-height: 400px; overflow-y: scroll; overscroll-behavior: contain; padding: 0 12px 0 0; scrollbar-gutter: stable; }
@@ -171,7 +173,7 @@ h2 { font-size: clamp(2.45rem, 4.1vw, 4.3rem); line-height: 1.04; margin-bottom:
 .social-icon-instagram circle:last-child { fill: url(#instagram-gradient); stroke: none; }
 .social-links a > span:last-child { font-size: 17px; font-weight: 400; line-height: 1; transition: transform 160ms ease; }
 .social-links a:hover, .social-links a:focus-visible { color: var(--blue); text-decoration: underline; text-underline-offset: 4px; }
-.social-links a:hover > span:last-child, .social-links a:focus-visible > span:last-child { transform: translateX(4px); }
+.social-links a:hover > span:last-child, .social-links a:hover .external-link-icon, .social-links a:focus-visible > span:last-child, .social-links a:focus-visible .external-link-icon { transform: translateX(4px); }
 .social-links a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .contact-form { background: var(--paper); padding: clamp(29px, 4vw, 48px); }
 .form-row { display: flex; flex-direction: column; gap: 8px; margin-bottom: 21px; }
