@@ -86,8 +86,10 @@ test('links the full calendar without selecting a visitor Google account', () =>
 test('uses an SVG diagonal arrow for every external profile link', () => {
   const page = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
   const stylesheet = fs.readFileSync(path.join(__dirname, '..', 'styles.css'), 'utf8');
+  const icons = page.match(/<svg class="external-link-icon"[^>]*>/g) || [];
 
-  assert.equal((page.match(/class="external-link-icon"/g) || []).length, 3);
+  assert.equal(icons.length, 3);
+  assert.equal(icons.every(icon => icon.includes('width="16"') && icon.includes('height="16"') && icon.includes('xmlns="http://www.w3.org/2000/svg"')), true);
   assert.equal(page.includes('↗'), false);
   assert.match(stylesheet, /\.external-link-icon \{[^}]*transition: transform 160ms ease;/);
 });
@@ -96,6 +98,12 @@ test('gives the full calendar link the social-link hover treatment', () => {
   const stylesheet = fs.readFileSync(path.join(__dirname, '..', 'styles.css'), 'utf8');
 
   assert.match(stylesheet, /\.events-intro \.text-link:hover, \.events-intro \.text-link:focus-visible \{ color: var\(--blue\); text-decoration: underline; text-underline-offset: 4px; \}/);
+});
+
+test('clips horizontal overflow at the mobile document boundary', () => {
+  const stylesheet = fs.readFileSync(path.join(__dirname, '..', 'styles.css'), 'utf8');
+
+  assert.match(stylesheet, /@media \(max-width: 760px\) \{\n  html, body \{ overflow-x: hidden; \}/);
 });
 
 test('returns every event in the next 30 days plus five in the following two months', () => {
