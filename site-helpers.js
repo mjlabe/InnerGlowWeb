@@ -12,6 +12,7 @@
 
   const dateOnly = value => new Date(`${value}T12:00:00Z`);
   const previousDate = value => new Date(dateOnly(value).getTime() - 86400000);
+  const addDays = (date, days) => new Date(date.getTime() + days * 86400000);
 
   const fullDate = (date, timeZone) => {
     const dateParts = parts(date, { weekday: 'long', month: 'long', day: 'numeric', timeZone });
@@ -45,5 +46,41 @@
     return (current + direction + total) % total;
   }
 
-  return { eventDisplay, nextIndex };
+  function calendarRequestUrl(config, now) {
+    const params = new URLSearchParams({
+      key: config.apiKey,
+      singleEvents: 'true',
+      orderBy: 'startTime',
+      timeMin: now.toISOString(),
+      timeMax: addDays(now, 90).toISOString(),
+      maxResults: '2500',
+      fields: 'items(summary,start,end,location)',
+    });
+    const calendarId = encodeURIComponent(config.calendarId);
+    return `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?${params}`;
+  }
+
+  function selectUpcomingEvents(events, now) {
+    const nearEnd = addDays(now, 30).getTime();
+    const followingEnd = addDays(now, 90).getTime();
+    const eventTime = event => {
+      const value = event.start?.dateTime || event.start?.date;
+      return value ? new Date(value).getTime() : NaN;
+    };
+    const inRange = events.filter(event => {
+      const start = eventTime(event);
+      return start >= now.getTime() && start <= followingEnd;
+    });
+    const nearEvents = inRange.filter(event => eventTime(event) <= nearEnd);
+    const followingEvents = inRange.filter(event => eventTime(event) > nearEnd);
+
+    return [...nearEvents, ...followingEvents.slice(0, 5)];
+  }
+
+  function calendarStatus(events, failed = false) {
+    if (failed) return 'Upcoming dates are taking a moment to load. Please use the full calendar link.';
+    return events.length ? '' : 'No dates are on the calendar just yet. Check back soon.';
+  }
+
+  return { calendarRequestUrl, calendarStatus, eventDisplay, nextIndex, selectUpcomingEvents };
 }));

@@ -115,27 +115,17 @@ const setEventsStatus = message => {
 const loadEvents = async () => {
   if (!eventsList || !eventsStatus || !window.calendarConfig?.apiKey) return;
 
-  const params = new URLSearchParams({
-    key: window.calendarConfig.apiKey,
-    singleEvents: 'true',
-    orderBy: 'startTime',
-    timeMin: new Date().toISOString(),
-    maxResults: '4',
-    fields: 'items(summary,start,end,location)',
-  });
-
   try {
-    const calendarId = encodeURIComponent(window.calendarConfig.calendarId);
-    const response = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?${params}`);
+    const response = await fetch(SiteHelpers.calendarRequestUrl(window.calendarConfig, new Date()));
     if (!response.ok) throw new Error('Calendar request failed');
 
     const payload = await response.json();
-    const events = payload.items || [];
+    const events = SiteHelpers.selectUpcomingEvents(payload.items || [], new Date());
     eventsList.replaceChildren(...events.map(eventRow));
-    setEventsStatus(events.length ? '' : 'No dates are on the calendar just yet. Check back soon.');
+    setEventsStatus(SiteHelpers.calendarStatus(events));
   } catch {
     eventsList.replaceChildren();
-    setEventsStatus('Upcoming dates are taking a moment to load. Please use the full calendar link.');
+    setEventsStatus(SiteHelpers.calendarStatus([], true));
   }
 };
 

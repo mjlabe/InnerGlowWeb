@@ -1,6 +1,12 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { eventDisplay, nextIndex } = require('../site-helpers.js');
+const {
+  calendarRequestUrl,
+  calendarStatus,
+  eventDisplay,
+  nextIndex,
+  selectUpcomingEvents,
+} = require('../site-helpers.js');
 
 test('formats an all-day event without a time', () => {
   assert.deepEqual(eventDisplay({
@@ -47,4 +53,49 @@ test('wraps carousel indexes in either direction', () => {
   assert.equal(nextIndex(0, 3, -1), 2);
   assert.equal(nextIndex(2, 3, 1), 0);
   assert.equal(nextIndex(1, 3, 1), 2);
+});
+
+test('builds a three-month upcoming-event request for the configured calendar', () => {
+  const url = new URL(calendarRequestUrl({
+    apiKey: 'calendar-key',
+    calendarId: 'labellelight@gmail.com',
+  }, new Date('2026-10-14T16:30:00Z')));
+
+  assert.equal(url.pathname, '/calendar/v3/calendars/labellelight%40gmail.com/events');
+  assert.equal(url.searchParams.get('key'), 'calendar-key');
+  assert.equal(url.searchParams.get('singleEvents'), 'true');
+  assert.equal(url.searchParams.get('orderBy'), 'startTime');
+  assert.equal(url.searchParams.get('timeMin'), '2026-10-14T16:30:00.000Z');
+  assert.equal(url.searchParams.get('timeMax'), '2027-01-12T16:30:00.000Z');
+  assert.equal(url.searchParams.get('maxResults'), '2500');
+  assert.equal(url.searchParams.get('fields'), 'items(summary,start,end,location)');
+});
+
+test('returns every event in the next 30 days plus five in the following two months', () => {
+  const now = new Date('2026-10-14T12:00:00Z');
+  const nearEvents = [
+    { start: { dateTime: '2026-10-15T12:00:00Z' } },
+    { start: { dateTime: '2026-10-18T12:00:00Z' } },
+    { start: { dateTime: '2026-10-22T12:00:00Z' } },
+    { start: { dateTime: '2026-10-27T12:00:00Z' } },
+    { start: { dateTime: '2026-11-02T12:00:00Z' } },
+    { start: { dateTime: '2026-11-09T12:00:00Z' } },
+  ];
+  const followingEvents = [
+    { summary: '1', start: { dateTime: '2026-11-15T12:00:00Z' } },
+    { summary: '2', start: { dateTime: '2026-11-20T12:00:00Z' } },
+    { summary: '3', start: { dateTime: '2026-12-01T12:00:00Z' } },
+    { summary: '4', start: { dateTime: '2026-12-20T12:00:00Z' } },
+    { summary: '5', start: { dateTime: '2027-01-01T12:00:00Z' } },
+    { summary: 'excluded', start: { dateTime: '2027-01-05T12:00:00Z' } },
+  ];
+
+  const selected = selectUpcomingEvents([...nearEvents, ...followingEvents], now);
+  assert.equal(selected.length, 11);
+  assert.equal(selected[10].summary, '5');
+});
+
+test('reports a warm empty or request-failure calendar state', () => {
+  assert.equal(calendarStatus([]), 'No dates are on the calendar just yet. Check back soon.');
+  assert.equal(calendarStatus([], true), 'Upcoming dates are taking a moment to load. Please use the full calendar link.');
 });
